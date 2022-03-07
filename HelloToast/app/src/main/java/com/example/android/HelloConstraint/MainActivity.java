@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.android.hellotoast;
+package com.example.android.HelloConstraint;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+;
+
 
 /**
  * Displays two Buttons and a TextView.
@@ -34,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCount = 0;
     private TextView mShowCount;
+    private Button mBtnZero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mShowCount = (TextView) findViewById(R.id.show_count);
+        mBtnZero = (Button) findViewById(R.id.button_zero);
     }
 
     /*
@@ -64,7 +70,17 @@ public class MainActivity extends AppCompatActivity {
     */
     public void countUp(View view) {
         mCount++;
+        if (mShowCount != null) {
+            mShowCount.setText(Integer.toString(mCount));
+            mBtnZero.setBackgroundColor(0xffE91E63);
+        }
+
+    }
+
+    public void countZero(View view) {
+        mCount = 0;
         if (mShowCount != null)
             mShowCount.setText(Integer.toString(mCount));
+            mBtnZero.setBackgroundColor(0xff9E9E9E);
     }
 }
